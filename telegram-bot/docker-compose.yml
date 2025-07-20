@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  domainintelbot:
+    build: .
+    container_name: domainintelbot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - IPINFO_TOKEN=${IPINFO_TOKEN}
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs  # Optional: for log persistence
+    # Uncomment for development (auto-restart on code changes)
+    # volumes:
+    #   - ./:/app
+    #   - /app/venv  # Exclude virtual environment
+    networks:
+      - bot-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  bot-network:
+    driver: bridge
