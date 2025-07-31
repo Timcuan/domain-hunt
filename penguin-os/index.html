@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin-OS :: Abstract Chain Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Fira Code', 'Courier New', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cli-btn {
+            @apply text-cyan-300 border border-cyan-500 px-4 py-2 m-2 hover:bg-blue-800 hover:text-white transition-all duration-300 font-mono;
+        }
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        body {
+            background: #000000;
+            font-family: 'Fira Code', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="bg-black text-cyan-300 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Boot Sequence -->
+        <div id="boot-sequence" class="mb-8"></div>
+        
+        <!-- Main Content -->
+        <div class="max-w-4xl mx-auto">
+            <!-- ASCII Penguin -->
+            <div class="text-center mb-8">
+                <pre class="text-cyan-300 text-lg leading-tight">
+    ___
+   (o o)
+  (  V  )
+ /--m-m--
+                </pre>
+                <div class="text-cyan-300 text-sm mt-2">Penguin-OS Mascot</div>
+            </div>
+            
+            <!-- Welcome Message -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-cyan-300 mb-4">Welcome to Penguin-OS</h1>
+                <p class="text-lg text-cyan-300 mb-6">The Abstract Chain Interface for Pudgy Penguin enthusiasts</p>
+                <div class="text-cyan-300 font-mono">
+                    <span class="text-blue-400">root@penguin-os:~$</span> 
+                    <span class="cursor">_</span>
+                </div>
+            </div>
+            
+            <!-- Available Commands -->
+            <div class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">Available Commands:</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="install.html" class="cli-btn block text-center">
+                        --install
+                    </a>
+                    <a href="desktop.html" class="cli-btn block text-center">
+                        --launch
+                    </a>
+                    <a href="docs.html" class="cli-btn block text-center">
+                        --docs
+                    </a>
+                </div>
+            </div>
+            
+            <!-- System Info -->
+            <div class="bg-gray-900 border border-cyan-500 rounded-lg p-6">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">System Information:</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="text-blue-400">OS:</span> Penguin-OS v1.0.0<br>
+                        <span class="text-blue-400">Kernel:</span> Abstract Chain Interface<br>
+                        <span class="text-blue-400">Architecture:</span> Pudgy Penguin Protocol
+                    </div>
+                    <div>
+                        <span class="text-blue-400">Token:</span> $POS (Penguin-OS)<br>
+                        <span class="text-blue-400">Network:</span> Ethereum Mainnet<br>
+                        <span class="text-blue-400">Status:</span> <span class="text-green-400">Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
