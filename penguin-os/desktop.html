@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin-OS Desktop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Fira Code', 'Courier New', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cli-btn {
+            @apply text-cyan-300 border border-cyan-500 px-4 py-2 m-2 hover:bg-blue-800 hover:text-white transition-all duration-300 font-mono;
+        }
+        .window {
+            @apply bg-gray-900 border border-cyan-500 rounded-lg p-4 mb-4;
+        }
+        .window-header {
+            @apply flex justify-between items-center mb-4 pb-2 border-b border-cyan-500;
+        }
+        body {
+            background: #000000;
+            font-family: 'Fira Code', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="bg-black text-cyan-300 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-cyan-300 mb-4">Penguin-OS Desktop</h1>
+            <p class="text-lg text-cyan-300">Virtual Penguin Operating System</p>
+        </div>
+        
+        <!-- System Status -->
+        <div class="bg-gray-900 border border-cyan-500 rounded-lg p-4 mb-8">
+            <div class="flex justify-between items-center">
+                <div class="font-mono text-sm">
+                    <span class="text-blue-400">Status:</span> <span class="text-green-400">Online</span> |
+                    <span class="text-blue-400">$POS:</span> <span class="text-cyan-300">1,337.42</span> |
+                    <span class="text-blue-400">Network:</span> <span class="text-cyan-300">Ethereum</span>
+                </div>
+                <div class="font-mono text-sm">
+                    <span class="text-blue-400">root@penguin-os:~$</span> <span class="cursor">_</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Application Windows -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Farm Module -->
+            <div id="farm-window" class="window">
+                <div class="window-header">
+                    <h2 class="text-xl font-bold text-cyan-300">🐧 Farm</h2>
+                    <button onclick="toggleWindow('farm-window')" class="text-cyan-300 hover:text-white">×</button>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">Staking Pool</h3>
+                        <div class="space-y-2 text-sm">
+                            <div><span class="text-blue-400">APY:</span> 12.5%</div>
+                            <div><span class="text-blue-400">Staked:</span> 500 $POS</div>
+                            <div><span class="text-blue-400">Rewards:</span> 62.5 $POS</div>
+                        </div>
+                        <button class="cli-btn mt-4">Stake $POS</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Airdrop Module -->
+            <div id="airdrop-window" class="window">
+                <div class="window-header">
+                    <h2 class="text-xl font-bold text-cyan-300">🎁 Airdrop</h2>
+                    <button onclick="toggleWindow('airdrop-window')" class="text-cyan-300 hover:text-white">×</button>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">Wallet Connection</h3>
+                        <div class="space-y-2 text-sm">
+                            <div><span class="text-blue-400">Status:</span> <span class="text-yellow-400">Disconnected</span></div>
+                            <div><span class="text-blue-400">Available:</span> 0 $POS</div>
+                        </div>
+                        <button class="cli-btn mt-4">Connect Wallet</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Codes Module -->
+            <div id="codes-window" class="window">
+                <div class="window-header">
+                    <h2 class="text-xl font-bold text-cyan-300">💻 Codes</h2>
+                    <button onclick="toggleWindow('codes-window')" class="text-cyan-300 hover:text-white">×</button>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">Terminal Snippets</h3>
+                        <div class="font-mono text-sm space-y-2">
+                            <div class="text-green-400">$ npm install penguin-os</div>
+                            <div class="text-green-400">$ npx penguin-cli --init</div>
+                            <div class="text-green-400">$ penguin farm --stake 100</div>
+                        </div>
+                        <button class="cli-btn mt-4">Copy Commands</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Module -->
+            <div id="chat-window" class="window">
+                <div class="window-header">
+                    <h2 class="text-xl font-bold text-cyan-300">💬 Chat</h2>
+                    <button onclick="toggleWindow('chat-window')" class="text-cyan-300 hover:text-white">×</button>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded h-48 overflow-y-auto">
+                        <div class="space-y-2 text-sm">
+                            <div><span class="text-blue-400">[System]</span> Welcome to Penguin-OS chat!</div>
+                            <div><span class="text-green-400">[User1]</span> Anyone farming $POS?</div>
+                            <div><span class="text-green-400">[User2]</span> Just staked 100 tokens!</div>
+                            <div><span class="text-green-400">[User3]</span> APY is looking good today</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <input type="text" id="chat-input" placeholder="Type your message..." 
+                               class="flex-1 bg-gray-800 border border-cyan-500 text-cyan-300 px-3 py-2 rounded-l font-mono">
+                        <button class="cli-btn rounded-l-none">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="mt-8 text-center">
+            <div class="bg-gray-900 border border-cyan-500 rounded-lg p-6">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">Quick Actions</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="toggleWindow('farm-window')" class="cli-btn">Toggle Farm</button>
+                    <button onclick="toggleWindow('airdrop-window')" class="cli-btn">Toggle Airdrop</button>
+                    <button onclick="toggleWindow('codes-window')" class="cli-btn">Toggle Codes</button>
+                    <button onclick="toggleWindow('chat-window')" class="cli-btn">Toggle Chat</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="text-center mt-8">
+            <a href="index.html" class="cli-btn">
+                ← Back to Home
+            </a>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Desktop-specific functionality
+        function toggleWindow(windowId) {
+            const window = document.getElementById(windowId);
+            if (window) {
+                window.classList.toggle('hidden');
+            }
+        }
+        
+        // Simulate chat typing
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput) {
+                const chatMessages = [
+                    'Connecting to Penguin network...',
+                    'Establishing secure channel...',
+                    'Ready for communication!',
+                    'Type your message below...'
+                ];
+                
+                let currentIndex = 0;
+                
+                function typeNextMessage() {
+                    if (currentIndex < chatMessages.length) {
+                        const message = chatMessages[currentIndex];
+                        chatInput.value = '';
+                        chatInput.placeholder = message;
+                        
+                        let i = 0;
+                        const interval = setInterval(() => {
+                            if (i < message.length) {
+                                chatInput.placeholder = message.substring(0, i + 1);
+                                i++;
+                            } else {
+                                clearInterval(interval);
+                                currentIndex++;
+                                setTimeout(typeNextMessage, 2000);
+                            }
+                        }, 100);
+                    }
+                }
+                
+                setTimeout(typeNextMessage, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

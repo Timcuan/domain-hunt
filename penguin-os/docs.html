@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin-OS Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Fira Code', 'Courier New', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cli-btn {
+            @apply text-cyan-300 border border-cyan-500 px-4 py-2 m-2 hover:bg-blue-800 hover:text-white transition-all duration-300 font-mono;
+        }
+        .code-block {
+            @apply bg-gray-800 border border-cyan-500 rounded p-4 font-mono text-sm;
+        }
+        body {
+            background: #000000;
+            font-family: 'Fira Code', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="bg-black text-cyan-300 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-cyan-300 mb-4">Penguin-OS Documentation</h1>
+                <p class="text-lg text-cyan-300">Complete guide to the Abstract Chain Interface</p>
+            </div>
+            
+            <!-- Table of Contents -->
+            <div class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">📚 Table of Contents</h2>
+                <div class="space-y-2">
+                    <a href="#overview" class="block text-cyan-300 hover:text-white">1. Overview</a>
+                    <a href="#tokenomics" class="block text-cyan-300 hover:text-white">2. Tokenomics: $POS</a>
+                    <a href="#features" class="block text-cyan-300 hover:text-white">3. Features</a>
+                    <a href="#developer" class="block text-cyan-300 hover:text-white">4. Developer Hooks</a>
+                    <a href="#github" class="block text-cyan-300 hover:text-white">5. GitHub Integration</a>
+                </div>
+            </div>
+            
+            <!-- Overview Section -->
+            <div id="overview" class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">1. Overview</h2>
+                <div class="space-y-4">
+                    <p>Penguin-OS is an innovative blockchain interface designed specifically for Pudgy Penguin enthusiasts. It provides a terminal-style user experience that bridges the gap between traditional CLI tools and modern DeFi protocols.</p>
+                    
+                    <div class="code-block">
+                        <div class="text-green-400"># Core Principles</div>
+                        <div>• Abstract Chain Interface</div>
+                        <div>• Pudgy Penguin Integration</div>
+                        <div>• Terminal-First Design</div>
+                        <div>• Community-Driven Development</div>
+                    </div>
+                    
+                    <p>The system operates on the Ethereum mainnet and provides seamless access to staking, farming, and community features through a familiar command-line interface.</p>
+                </div>
+            </div>
+            
+            <!-- Tokenomics Section -->
+            <div id="tokenomics" class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">2. Tokenomics: $POS</h2>
+                <div class="space-y-4">
+                    <p><strong>$POS</strong> (Penguin-OS) is the native token of the ecosystem, designed to incentivize participation and governance.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-4 rounded">
+                            <h3 class="text-lg font-bold text-cyan-300 mb-2">Token Details</h3>
+                            <div class="space-y-2 text-sm">
+                                <div><span class="text-blue-400">Symbol:</span> $POS</div>
+                                <div><span class="text-blue-400">Total Supply:</span> 1,000,000</div>
+                                <div><span class="text-blue-400">Circulating:</span> 750,000</div>
+                                <div><span class="text-blue-400">Staking APY:</span> 12.5%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-4 rounded">
+                            <h3 class="text-lg font-bold text-cyan-300 mb-2">Distribution</h3>
+                            <div class="space-y-2 text-sm">
+                                <div><span class="text-blue-400">Staking Rewards:</span> 40%</div>
+                                <div><span class="text-blue-400">Community:</span> 30%</div>
+                                <div><span class="text-blue-400">Development:</span> 20%</div>
+                                <div><span class="text-blue-400">Treasury:</span> 10%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Section -->
+            <div id="features" class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">3. Features</h2>
+                <div class="space-y-6">
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">🐧 Farm Module</h3>
+                        <p>Stake your $POS tokens to earn rewards with competitive APY rates. The farming system is designed to be simple and efficient.</p>
+                        <div class="code-block mt-2">
+                            <div class="text-green-400">$ penguin farm --stake 100</div>
+                            <div class="text-green-400">$ penguin farm --claim</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">🎁 Airdrop System</h3>
+                        <p>Participate in community airdrops and earn additional $POS tokens. Connect your wallet to start receiving rewards.</p>
+                        <div class="code-block mt-2">
+                            <div class="text-green-400">$ penguin airdrop --connect</div>
+                            <div class="text-green-400">$ penguin airdrop --claim</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">💻 Code Integration</h3>
+                        <p>Access terminal commands and code snippets for developers. Integrate Penguin-OS into your own projects.</p>
+                        <div class="code-block mt-2">
+                            <div class="text-green-400">$ npm install penguin-os</div>
+                            <div class="text-green-400">$ npx penguin-cli --init</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">💬 Community Chat</h3>
+                        <p>Connect with other Penguin-OS users in real-time. Share strategies, ask questions, and build the community.</p>
+                        <div class="code-block mt-2">
+                            <div class="text-green-400">$ penguin chat --join</div>
+                            <div class="text-green-400">$ penguin chat --send "Hello World!"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Developer Section -->
+            <div id="developer" class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">4. Developer Hooks</h2>
+                <div class="space-y-4">
+                    <p>Penguin-OS provides comprehensive developer tools and APIs for building on top of the platform.</p>
+                    
+                    <div class="code-block">
+                        <div class="text-green-400">// Basic Integration</div>
+                        <div>const penguinOS = require('penguin-os');</div>
+                        <div>const client = new penguinOS.Client();</div>
+                        <div></div>
+                        <div class="text-green-400">// Connect to network</div>
+                        <div>await client.connect();</div>
+                        <div></div>
+                        <div class="text-green-400">// Stake tokens</div>
+                        <div>await client.farm.stake(100);</div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">Available APIs</h3>
+                        <div class="space-y-2 text-sm">
+                            <div><span class="text-blue-400">Farm API:</span> Staking and rewards management</div>
+                            <div><span class="text-blue-400">Airdrop API:</span> Distribution and claiming</div>
+                            <div><span class="text-blue-400">Chat API:</span> Real-time messaging</div>
+                            <div><span class="text-blue-400">Wallet API:</span> Connection and transaction signing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GitHub Section -->
+            <div id="github" class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">5. GitHub Integration</h2>
+                <div class="space-y-4">
+                    <p>Penguin-OS is open-source and community-driven. Contribute to the project on GitHub.</p>
+                    
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-lg font-bold text-cyan-300 mb-2">Repository</h3>
+                        <div class="space-y-2">
+                            <div><span class="text-blue-400">Main Repo:</span> github.com/penguin-os/core</div>
+                            <div><span class="text-blue-400">CLI Tool:</span> github.com/penguin-os/cli</div>
+                            <div><span class="text-blue-400">Documentation:</span> github.com/penguin-os/docs</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="https://github.com/penguin-os" target="_blank" class="cli-btn inline-block">
+                            🐙 View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="text-center mt-8">
+                <a href="index.html" class="cli-btn">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

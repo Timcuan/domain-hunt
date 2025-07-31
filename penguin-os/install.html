@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin-OS Installer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Fira Code', 'Courier New', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cli-btn {
+            @apply text-cyan-300 border border-cyan-500 px-4 py-2 m-2 hover:bg-blue-800 hover:text-white transition-all duration-300 font-mono;
+        }
+        .progress-bar {
+            @apply bg-gray-700 rounded-full h-2;
+        }
+        .progress-fill {
+            @apply bg-cyan-500 h-2 rounded-full transition-all duration-500;
+        }
+        body {
+            background: #000000;
+            font-family: 'Fira Code', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="bg-black text-cyan-300 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-cyan-300 mb-4">Penguin-OS Installer</h1>
+                <p class="text-lg text-cyan-300">Installing Penguin-OS v1.0.0</p>
+            </div>
+            
+            <!-- Installation Log -->
+            <div class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">Installation Progress:</h2>
+                <div id="install-log" class="font-mono text-sm space-y-2">
+                    <!-- Installation messages will be added here -->
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="bg-gray-900 border border-cyan-500 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-bold text-cyan-300 mb-4">Installation Progress:</h2>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div id="progress-text" class="text-center mt-2 text-cyan-300">0%</div>
+            </div>
+            
+            <!-- Boot Command (hidden initially) -->
+            <div id="boot-command" class="hidden text-center">
+                <div class="bg-gray-900 border border-cyan-500 rounded-lg p-6">
+                    <h2 class="text-xl font-bold text-cyan-300 mb-4">Installation Complete!</h2>
+                    <p class="text-cyan-300 mb-4">Penguin-OS has been successfully installed.</p>
+                    <div class="font-mono text-cyan-300 mb-4">
+                        <span class="text-blue-400">root@penguin-os:~$</span> boot penguin-os
+                    </div>
+                    <a href="desktop.html" class="cli-btn inline-block">
+                        Launch Penguin-OS
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Back to Home -->
+            <div class="text-center mt-8">
+                <a href="index.html" class="cli-btn">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Installation simulation
+        const installMessages = [
+            'Initializing installation...',
+            'Downloading Penguin-OS core components...',
+            'Installing blockchain protocols...',
+            'Configuring Pudgy Penguin modules...',
+            'Setting up secure connections...',
+            'Installing $POS token contracts...',
+            'Configuring wallet integration...',
+            'Setting up farming protocols...',
+            'Installing airdrop system...',
+            'Configuring chat interface...',
+            'Finalizing installation...',
+            'Installation complete!'
+        ];
+        
+        const installLog = document.getElementById('install-log');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const bootCommand = document.getElementById('boot-command');
+        
+        let currentStep = 0;
+        
+        function addLogMessage(message) {
+            const logEntry = document.createElement('div');
+            logEntry.className = 'text-cyan-300';
+            logEntry.innerHTML = `<span class="text-blue-400">[INFO]</span> ${message}`;
+            installLog.appendChild(logEntry);
+            installLog.scrollTop = installLog.scrollHeight;
+        }
+        
+        function updateProgress(percentage) {
+            progressFill.style.width = `${percentage}%`;
+            progressText.textContent = `${percentage}%`;
+        }
+        
+        function simulateInstallation() {
+            if (currentStep < installMessages.length) {
+                const message = installMessages[currentStep];
+                const progress = Math.round((currentStep / (installMessages.length - 1)) * 100);
+                
+                setTimeout(() => {
+                    addLogMessage(message);
+                    updateProgress(progress);
+                    currentStep++;
+                    simulateInstallation();
+                }, 800);
+            } else {
+                // Show boot command after installation
+                setTimeout(() => {
+                    bootCommand.classList.remove('hidden');
+                }, 1000);
+            }
+        }
+        
+        // Start installation when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(simulateInstallation, 1000);
+        });
+    </script>
+</body>
+</html>
